@@ -1,6 +1,6 @@
-# {{REPO_NAME}}
+# IntelligentDataAnalysis
 
-{{REPO_DESCRIPTION}}
+Labs for Intelligent Data Analysis at the university
 
 <!-- Status Start -->
 
