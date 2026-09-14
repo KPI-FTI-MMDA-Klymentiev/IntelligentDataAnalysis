@@ -1,0 +1,40 @@
+name: Setup Template Repository
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    if: ${{ github.repository != 'KlymentievMaksym/template-university-labs' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Inject Repository Name and Description
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
+          REPO_DESC: ${{ github.event.repository.description }}
+        run: |
+          sed -i "s/{{REPO_NAME}}/${REPO_NAME}/g" README.md
+          
+          if [ -z "$REPO_DESC" ]; then
+            sed -i "s/{{REPO_DESCRIPTION}}//g" README.md
+          else
+            sed -i "s|{{REPO_DESCRIPTION}}|${REPO_DESC}|g" README.md
+          fi
+
+      - name: Self-Destruct Setup Workflow
+        run: rm .github/workflows/setup-template.yaml
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore(setup): initialize repo from template"
