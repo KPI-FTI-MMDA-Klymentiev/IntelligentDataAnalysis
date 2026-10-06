@@ -16,6 +16,9 @@ jobs:
         uses: actions/checkout@v7
         with:
           ref: main
+      
+      - name: Fetch Git Tags
+        run: git fetch --tags --force
 
       - name: Setup Python
         uses: actions/setup-python@v7
