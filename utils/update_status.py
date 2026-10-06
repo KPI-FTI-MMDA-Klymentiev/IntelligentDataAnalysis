@@ -37,7 +37,9 @@ def update_status() -> None:
     for lab_dir in labs_subdirectories:
         lab_name = lab_dir.name
         latest_tag = get_latest_lab_tag(lab_name)
-        
+
+        print("Latest tag:", latest_tag)
+
         if latest_tag:
             status_lines.append(f"- [x] {lab_name} *(Completed: `{latest_tag}`)*")
         else:
