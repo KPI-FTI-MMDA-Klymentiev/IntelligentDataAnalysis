@@ -181,6 +181,7 @@ cython_debug/
 .cursorindexingignore
 
 *.csv
+*.pth
 **/train
 **/test
 uv.lock
