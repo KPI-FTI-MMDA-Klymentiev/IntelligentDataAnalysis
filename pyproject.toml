@@ -8,7 +8,10 @@ dependencies = [
     "matplotlib",
     "seaborn",
     "pandas",
-    "wordcloud"
+    "wordcloud",
+    "torchvision",
+    "ipykernel",
+    "openpyxl"
 ]
 
 [project.optional-dependencies]
