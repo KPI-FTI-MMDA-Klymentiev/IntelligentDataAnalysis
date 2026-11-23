@@ -185,4 +185,5 @@ cython_debug/
 *.pt
 **/train
 **/test
+**/glove
 uv.lock
